@@ -5,10 +5,14 @@ import cookieParser from 'cookie-parser'
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
-
+import buildRoutes from './routes'
 
 mongoose.Promise = global.Promise;
-mongoose.connect(`mongodb://localhost:27017/social-media?retryWrites=true`);
+mongoose.connect(`mongodb://localhost:27017/social-media?retryWrites=true`,
+    { useNewUrlParser: true,
+              useCreateIndex: true,
+              useUnifiedTopology: true
+});
 
 
 const app = express();
@@ -24,10 +28,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+buildRoutes(app);
+
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   next(createError(404));
 });
+
 
 // error handler
 app.use((err: any, req: any, res: any, next: any) => {
@@ -37,7 +44,10 @@ app.use((err: any, req: any, res: any, next: any) => {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.json({
+    message: err.message,
+    error: err
+  });
 });
 
 // start the Express server
