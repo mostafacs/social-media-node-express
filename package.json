@@ -1,26 +1,33 @@
 {
-  "name": "ls",
-  "version": "1.0.0",
-  "description": "social media demo with node js express typescript",
-  "main": "index.js",
+  "name": "social-media-node-typescript",
+  "version": "0.0.0",
+  "private": true,
+  "main": "dist/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
+    "build": "tsc",
+    "prestart": "npm run build",
+    "start": "node .",
+    "test": "echo \"Erroxr: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mostafacs/social-media-node-express.git"
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "mongoose": "^5.9.27",
+    "morgan": "~1.9.1"
   },
-  "keywords": [
-    "social",
-    "media",
-    "nodejs",
-    "express",
-    "typescript"
-  ],
-  "author": "Mostafa Albana",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mostafacs/social-media-node-express/issues"
-  },
-  "homepage": "https://github.com/mostafacs/social-media-node-express#readme"
+  "devDependencies": {
+    "@types/body-parser": "^1.19.0",
+    "@types/cookie-parser": "^1.4.2",
+    "@types/express": "^4.17.7",
+    "@types/http-errors": "^1.8.0",
+    "@types/mongoose": "^5.7.34",
+    "@types/morgan": "^1.9.1",
+    "@types/node": "^14.0.27",
+    "tslint": "^6.1.3",
+    "typescript": "^3.9.7"
+  }
 }
