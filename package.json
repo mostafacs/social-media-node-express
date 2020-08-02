@@ -1,0 +1,26 @@
+{
+  "name": "ls",
+  "version": "1.0.0",
+  "description": "social media demo with node js express typescript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mostafacs/social-media-node-express.git"
+  },
+  "keywords": [
+    "social",
+    "media",
+    "nodejs",
+    "express",
+    "typescript"
+  ],
+  "author": "Mostafa Albana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mostafacs/social-media-node-express/issues"
+  },
+  "homepage": "https://github.com/mostafacs/social-media-node-express#readme"
+}
