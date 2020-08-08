@@ -5,7 +5,9 @@ import cookieParser from 'cookie-parser'
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
-import buildRoutes from './routes'
+import buildRoutes, {publicPaths} from './routes'
+import jwt from 'express-jwt'
+import {Config} from './utils/config'
 
 mongoose.Promise = global.Promise;
 mongoose.connect(`mongodb://localhost:27017/social-media?retryWrites=true`,
@@ -26,7 +28,7 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(jwt({ secret: Config.secret, algorithms: ['HS256'] }).unless({ path: publicPaths }));
 
 buildRoutes(app);
 
